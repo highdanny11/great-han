@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="大漢酵素MOMO品牌旗艦館 - 天然酵素專家，健康生活好選擇">
+    <title>大漢酵素 | MOMO品牌旗艦館</title>
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- UnoCSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        /* 品牌色系變量 */
+        :root {
+            --brand-primary: #2d5016;
+            --brand-light: #4a7c2c;
+            --brand-dark: #1a3009;
+            --brand-accent: #5a8c3a;
+            --brand-red: #e1380e;
+        }
+
+        /* Swiper按鈕自訂樣式 */
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: white;
+            width: 50px;
+            height: 50px;
+            background: rgba(45, 80, 22, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background: var(--brand-primary);
+        }
+
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            font-size: 20px;
+        }
+
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.5;
+            width: 12px;
+            height: 12px;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+
+        /* Hero內容動畫 */
+        .hero-content h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 頁籤樣式 */
+        .tab-btn {
+            position: relative;
+            outline: none;
+        }
+
+        .tab-btn.active {
+            background: var(--brand-primary);
+            color: white;
+        }
+
+        /* Vue 頁籤內容容器 */
+        .vue-tab-container {
+            position: relative;
+        }
+
+        .vue-tab-content {
+            width: 100%;
+        }
+
+        /* Vue Transition 效果 - 淡入淡出 */
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-enter-from,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* Vue Transition 效果 - 滑動 */
+        .slide-left-enter-active,
+        .slide-left-leave-active,
+        .slide-right-enter-active,
+        .slide-right-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .slide-left-enter-from {
+            opacity: 0;
+            transform: translateX(10%);
+        }
+
+        .slide-left-leave-to {
+            opacity: 0;
+            transform: translateX(-10%);
+        }
+
+        .slide-right-enter-from {
+            opacity: 0;
+            transform: translateX(-10%);
+        }
+
+        .slide-right-leave-to {
+            opacity: 0;
+            transform: translateX(10%);
+        }
+
+        button {
+            border: none;
+            outline: none;
+            all: unset;
+            cursor: pointer;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans m-0 p-0 overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-1000">
+        <div class="max-w-1200px mx-auto px-5">
+            <div class="flex items-center justify-center md:justify-between py-4">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="https://cdn-next.cybassets.com/media/W1siZiIsIjE1MDQ0L2F0dGFjaGVkX3Bob3Rvcy8xNzM2NDk1MzY1X0xPR08tNjB4MzAwLmpwZy5qcGVnIl1d.jpeg?sha=ade855177e45ff85"
+                        alt="大漢酵素" class="h-12 w-auto"
+                        onerror="this.src='./assets/img/logo/1736495365_LOGO-60x300.jpg.avif'">
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="md:flex gap-8 list-none m-0 p-0 hidden">
+                        <li><a href="#"
+                                class="text-[var(--brand-primary)] font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">館長推薦</a>
+                        </li>
+                        <li><a href="#all_store_discounts"
+                                class="text-[var(--brand-primary)] font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">全館優惠</a>
+                        </li>
+                        <li><a href="#main_combination"
+                                class="text-[var(--brand-primary)] font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">主打組合</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="text-[var(--brand-primary)] font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">好評推薦</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <!-- Navigation -->
+    <nav class="bg-[var(--brand-dark)] md:hidden flex p-2 gap-8 justify-center list-none text-center text-sm">
+        <li><a href="#"
+                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">館長推薦</a>
+        </li>
+        <li><a href="#all_store_discounts"
+                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">全館優惠</a>
+        </li>
+        <li><a href="#main_combination"
+                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">主打組合</a>
+        </li>
+        <li><a href="#contact"
+                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">好評推薦</a>
+        </li>
+    </nav>
+
+    <!-- Hero Section - Swiper Carousel -->
+    <section id="hero" class="relative lg:h-[600px] h-[180px] md:h-[368px] max-h-[920px]">
+        <div class="swiper hero-swiper w-full h-full">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div
+                        class="hero-slide h-full flex items-center relative overflow-hidden bg-[url('./assets/img/hero/202601-1.jpg')] bg-center bg-cover">
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div
+                        class="hero-slide h-full flex items-center relative overflow-hidden bg-[url('./assets/img/hero/202601-2.jpg')] bg-center bg-cover">
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div
+                        class="hero-slide h-full flex items-center relative overflow-hidden bg-[url('./assets/img/hero/202601-3.jpg')] bg-center bg-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 導航按鈕 -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+    <!-- All Store Discounts -->
+    <section id="all_store_discounts" class="px-5 py-20 bg-[rgb(245,183,183)]">
+        <h2 class="text-[var(--brand-primary)] text-[48px] leading-[50px] my-0 font-bold text-center">全館優惠</h2>
+        <h3 class="text-[var(--brand-accent)] text-center mb-10">迎新春加碼活動</h3>
+        <div class="max-w-1200px mx-auto mt-4 mb-10">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 justify-center flex-wrap">
+                <div
+                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
+                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
+                        src="./assets/img/all_store_discounts/product1.avif" alt="">
+                    <i
+                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                </div>
+                <div
+                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
+                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
+                        src="./assets/img/all_store_discounts/product2.avif" alt="">
+                    <i
+                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                </div>
+                <div
+                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
+                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
+                        src="./assets/img/all_store_discounts/product3.avif" alt="">
+                    <i
+                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                </div>
+                <div
+                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
+                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
+                        src="./assets/img/all_store_discounts/product4.avif" alt="">
+                    <i
+                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main combination -->
+    <section id="main_combination" class="px-5 py-20 bg-[rgb(245,183,183)]">
+        <h2 class="text-[var(--brand-primary)] my-0 text-[48px] leading-[50px] font-bold text-center mb-10">主打組合</h2>
+
+        <div class="max-w-1200px mx-auto">
+            <!-- 頁籤導航 -->
+            <div class="flex justify-center gap-4 mb-8 flex-wrap">
+                <button v-for="(tab, index) in tabs" :key="tab.id" @click="switchToTab(index)"
+                    :class="['tab-btn', 'px-8', 'py-3', 'bg-white', 'text-[var(--brand-primary)]', 'font-medium', 'rounded-lg', 'border-2', 'border-[var(--brand-primary)]', 'hover:bg-[var(--brand-primary)]', 'hover:text-white', 'transition-all', 'cursor-pointer', { 'active': activeIndex === index }]">
+                    {{ tab.name }}
+                </button>
+            </div>
+
+            <!-- 頁籤內容容器 -->
+            <div class="vue-tab-container relative min-h-[600px]">
+                <!-- 導航按鈕 -->
+                <button @click="prevTab"
+                    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center text-[var(--brand-primary)] hover:text-[var(--brand-accent)] transition-all shadow-md hover:shadow-lg">
+                    <i class="bi bi-chevron-left text-2xl"></i>
+                </button>
+                <button @click="nextTab"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center text-[var(--brand-primary)] hover:text-[var(--brand-accent)] transition-all shadow-md hover:shadow-lg">
+                    <i class="bi bi-chevron-right text-2xl"></i>
+                </button>
+
+                <!-- Transition 包裹的內容 -->
+                <transition :name="transitionName" mode="out-in">
+                    <div :key="activeIndex" class="vue-tab-content">
+                        <div class="bg-white rounded-lg p-8 shadow-lg">
+                            <h3 class="text-3xl font-bold text-[var(--brand-primary)] mb-4 text-center">{{
+                                currentTab.title }}</h3>
+                            <p class="text-gray-600 mb-8 text-center text-lg">{{ currentTab.description }}</p>
+
+                            <!-- 商品列表 -->
+                            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
+                                <div v-for="(item, index) in currentTab.items" :key="index"
+                                    class="flex flex-col items-center p-6 bg-gray-50 rounded-lg hover:shadow-xl transition-shadow">
+                                    <div
+                                        class="w-full h-[200px] bg-gradient-to-br from-[var(--brand-light)] to-[var(--brand-accent)] rounded-lg mb-4 flex items-center justify-center">
+                                        <i class="bi bi-box-seam text-white text-[60px]"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-[var(--brand-primary)] mb-2 text-center">{{
+                                        item.name }}</h4>
+                                    <p class="text-gray-600 text-sm mb-3 text-center">{{ item.description }}</p>
+                                    <div class="text-2xl font-bold text-[var(--brand-red)] mb-4">${{ item.price }}</div>
+                                    <button
+                                        class="bg-[var(--brand-primary)] text-white px-6 py-2 rounded-lg hover:bg-[var(--brand-accent)] transition-colors font-medium w-full">
+                                        立即選購
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+            </div>
+        </div>
+    </section>
+    <!-- Highly recommended -->
+    <section id="highly_recommended" class="px-5 py-20 ">
+        <h2 class="text-[var(--brand-primary)] my-0 text-[48px] leading-[50px] font-bold text-center mb-10">好評推薦</h2>
+        <div class="max-w-1200px mx-auto">
+            <div class="grid lg:grid-cols-2 grid-cols-1 justify-center flex-wrap">
+                <iframe class="w-full h-[574px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A" title="影片標題"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <img class="w-full" src="./assets/img/highly_recommended/momo02-100.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic',
+        });
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            speed: 800,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+
+        // Vue3 頁籤應用
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    activeIndex: 0,
+                    transitionName: 'fade',
+                    autoplayTimer: null,
+                    tabs: [
+                        {
+                            id: 1,
+                            name: '酵素系列',
+                            title: '酵素系列產品',
+                            description: '精選天然發酵酵素，為您的健康把關',
+                            items: [
+                                { name: '綜合酵素精華', description: '天然發酵，營養滿分', price: 1280 },
+                                { name: '蔬果酵素', description: '多種蔬果發酵精華', price: 1580 },
+                                { name: '纖維酵素', description: '促進消化順暢健康', price: 1380 },
+                                { name: '活力酵素組', description: '全方位營養補給', price: 2280 }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            name: '保健食品',
+                            title: '保健食品系列',
+                            description: '精選保健食品，守護您的健康',
+                            items: [
+                                { name: '益生菌膠囊', description: '腸道健康守護者', price: 880 },
+                                { name: '綜合維他命', description: '每日營養補充', price: 680 },
+                                { name: '鈣片加強配方', description: '骨骼保健首選', price: 780 },
+                                { name: '魚油軟膠囊', description: 'Omega-3 精華', price: 980 }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            name: '養生飲品',
+                            title: '養生飲品系列',
+                            description: '天然養生飲品，品味健康生活',
+                            items: [
+                                { name: '酵素原液', description: '純天然發酵飲品', price: 1680 },
+                                { name: '膠原蛋白飲', description: '美容養顏聖品', price: 1880 },
+                                { name: '青汁精力飲', description: '綠色能量補給', price: 1280 },
+                                { name: '蔓越莓酵素飲', description: '女性調理首選', price: 1580 }
+                            ]
+                        }
+                    ]
+                }
+            },
+            computed: {
+                currentTab() {
+                    return this.tabs[this.activeIndex];
+                }
+            },
+            mounted() {
+                this.startAutoplay();
+            },
+            beforeUnmount() {
+                this.stopAutoplay();
+            },
+            methods: {
+                switchToTab(index) {
+                    if (index === this.activeIndex) return;
+
+                    this.transitionName = index > this.activeIndex ? 'slide-left' : 'slide-right';
+                    this.activeIndex = index;
+                    this.resetAutoplay();
+                },
+                nextTab() {
+                    this.transitionName = 'slide-left';
+                    this.activeIndex = (this.activeIndex + 1) % this.tabs.length;
+                    this.resetAutoplay();
+                },
+                prevTab() {
+                    this.transitionName = 'slide-right';
+                    this.activeIndex = (this.activeIndex - 1 + this.tabs.length) % this.tabs.length;
+                    this.resetAutoplay();
+                },
+                startAutoplay() {
+                    this.autoplayTimer = setInterval(() => {
+                        this.nextTab();
+                    }, 5000);
+                },
+                stopAutoplay() {
+                    if (this.autoplayTimer) {
+                        clearInterval(this.autoplayTimer);
+                        this.autoplayTimer = null;
+                    }
+                },
+                resetAutoplay() {
+                    this.stopAutoplay();
+                    this.startAutoplay();
+                }
+            }
+        }).mount('#main_combination');
+    </script>
+</body>
+
+</html>

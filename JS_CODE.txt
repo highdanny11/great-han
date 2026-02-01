@@ -1,0 +1,351 @@
+/**
+ * 大漢酵素 MOMO品牌旗艦館 - 主要JavaScript
+ * 包含輪播、動畫、互動功能
+ * 
+ * 將此文件內容複製到：assets/js/main.js
+ */
+
+// 等待DOM加載完成
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ========================================
+    // 初始化 Swiper 輪播
+    // ========================================
+    const heroSwiper = new Swiper('.hero-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        speed: 800,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // ========================================
+    // 初始化 AOS 動畫
+    // ========================================
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+        easing: 'ease-out-cubic',
+    });
+
+    // ========================================
+    // Header 滾動效果
+    // ========================================
+    const header = document.querySelector('.header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        // 向下滾動時縮小header padding
+        if (currentScroll > 100) {
+            header.style.padding = '5px 0';
+            header.style.boxShadow = '0 4px 20px rgba(45, 80, 22, 0.15)';
+        } else {
+            header.style.padding = '';
+            header.style.boxShadow = '';
+        }
+
+        lastScroll = currentScroll;
+    });
+
+    // ========================================
+    // 平滑滾動到錨點
+    // ========================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // 如果不是單純的 #，則執行平滑滾動
+            if (href !== '#' && document.querySelector(href)) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                const headerHeight = header.offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ========================================
+    // Back to Top 按鈕
+    // ========================================
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 500) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // ========================================
+    // 商品卡片動畫增強
+    // ========================================
+    const productCards = document.querySelectorAll('.product-card');
+    
+    productCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+
+    // ========================================
+    // 系列卡片互動效果
+    // ========================================
+    const seriesCards = document.querySelectorAll('.series-card');
+    
+    seriesCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const overlay = this.querySelector('.series-overlay');
+            overlay.style.padding = '40px 20px';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const overlay = this.querySelector('.series-overlay');
+            overlay.style.padding = '30px 20px';
+        });
+    });
+
+    // ========================================
+    // 懶加載圖片優化
+    // ========================================
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // ========================================
+    // 購買按鈕點擊效果
+    // ========================================
+    const buyButtons = document.querySelectorAll('.btn-buy, .btn-primary');
+    
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // 如果是真實連結，讓它正常運作
+            if (this.getAttribute('href') !== '#') {
+                return;
+            }
+            
+            e.preventDefault();
+            
+            // 添加點擊動畫
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+            
+            // 這裡可以添加加入購物車的邏輯
+            showNotification('商品已加入購物車！');
+        });
+    });
+
+    // ========================================
+    // 通知提示功能
+    // ========================================
+    function showNotification(message) {
+        // 創建通知元素
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(45, 80, 22, 0.3);
+            z-index: 10000;
+            animation: slideInRight 0.5s ease;
+            font-weight: 600;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // 3秒後移除
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.5s ease';
+            setTimeout(() => {
+                notification.remove();
+            }, 500);
+        }, 3000);
+    }
+
+    // 添加動畫關鍵幀
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // ========================================
+    // 視差滾動效果（可選）
+    // ========================================
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-slide');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+
+    // ========================================
+    // 響應式導航選單（手機版）
+    // ========================================
+    function createMobileMenu() {
+        if (window.innerWidth <= 768) {
+            const nav = document.querySelector('.nav');
+            if (!document.querySelector('.mobile-menu-toggle')) {
+                const toggle = document.createElement('button');
+                toggle.className = 'mobile-menu-toggle';
+                toggle.innerHTML = '☰';
+                toggle.style.cssText = `
+                    display: block;
+                    font-size: 24px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: var(--primary-color);
+                `;
+                
+                document.querySelector('.header-content').insertBefore(
+                    toggle,
+                    document.querySelector('.header-icons')
+                );
+                
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    nav.style.display = nav.style.display === 'none' ? 'block' : 'none';
+                });
+            }
+        }
+    }
+
+    // 初始化和監聽窗口大小變化
+    createMobileMenu();
+    window.addEventListener('resize', createMobileMenu);
+
+    // ========================================
+    // 產品篩選功能（可擴展）
+    // ========================================
+    function filterProducts(category) {
+        const products = document.querySelectorAll('.product-card');
+        
+        products.forEach(product => {
+            if (category === 'all' || product.dataset.category === category) {
+                product.style.display = 'block';
+                product.style.animation = 'fadeInUp 0.5s ease';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    // ========================================
+    // 性能優化：防抖函數
+    // ========================================
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // 使用防抖優化滾動事件
+    const optimizedScroll = debounce(function() {
+        // 滾動相關的優化邏輯
+    }, 100);
+
+    window.addEventListener('scroll', optimizedScroll);
+
+    // ========================================
+    // 載入動畫
+    // ========================================
+    window.addEventListener('load', function() {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+        
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+    });
+
+    // ========================================
+    // Console 品牌訊息
+    // ========================================
+    console.log('%c大漢酵素 MOMO品牌旗艦館', 'color: #2d5016; font-size: 24px; font-weight: bold;');
+    console.log('%c天然發酵 健康首選', 'color: #4a7c2c; font-size: 14px;');
+});
