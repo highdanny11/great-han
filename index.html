@@ -37,17 +37,18 @@
         /* Swiper按鈕自訂樣式 */
         .swiper-button-prev,
         .swiper-button-next {
-            color: white;
+            color: var(--brand-primary);
             width: 50px;
             height: 50px;
-            background: rgba(45, 80, 22, 0.5);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             transition: all 0.3s ease;
+            border: none;
         }
 
         .swiper-button-prev:hover,
         .swiper-button-next:hover {
-            background: var(--brand-primary);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .swiper-button-prev::after,
@@ -161,7 +162,7 @@
 
 <body class="font-sans m-0 p-0 overflow-x-hidden">
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-1000">
+    <header class="bg-white shadow-md">
         <div class="max-w-1200px mx-auto px-5">
             <div class="flex items-center justify-center md:justify-between py-4">
                 <!-- Logo -->
@@ -183,7 +184,7 @@
                         <li><a href="#main_combination"
                                 class="text-[var(--brand-primary)] font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">主打組合</a>
                         </li>
-                        <li><a href="#contact"
+                        <li><a href="#highly_recommended"
                                 class="text-[var(--brand-primary)] font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">好評推薦</a>
                         </li>
                     </ul>
@@ -203,26 +204,26 @@
         <li><a href="#main_combination"
                 class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">主打組合</a>
         </li>
-        <li><a href="#contact"
+        <li><a href="#highly_recommended"
                 class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">好評推薦</a>
         </li>
     </nav>
 
     <!-- Hero Section - Swiper Carousel -->
-    <section id="hero" class="relative lg:h-[600px] h-[180px] md:h-[368px] max-h-[920px]">
+    <section id="hero" class="relative aspect-[9/16] md:aspect-[16/9]">
         <div class="swiper hero-swiper w-full h-full">
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
                 <div class="swiper-slide">
                     <div
-                        class="hero-slide h-full flex items-center relative overflow-hidden bg-[url('./assets/img/hero/202601-1.jpg')] bg-center bg-cover">
+                        class="hero-slide h-full flex items-center relative overflow-hidden md:bg-[url('./assets/img/hero/202601-1.jpg')] bg-[url(./assets/img/hero/202601-1-sm.jpg)] bg-center bg-cover">
                     </div>
                 </div>
 
                 <!-- Slide 2 -->
                 <div class="swiper-slide">
                     <div
-                        class="hero-slide h-full flex items-center relative overflow-hidden bg-[url('./assets/img/hero/202601-2.jpg')] bg-center bg-cover">
+                        class="hero-slide h-full flex items-center relative overflow-hidden md:bg-[url('./assets/img/hero/202601-2.jpg')] bg-[url(./assets/img/hero/202601-2-sm.jpg)] bg-center bg-cover">
                     </div>
                 </div>
 
