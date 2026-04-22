@@ -27,10 +27,9 @@
     <style>
         /* 品牌色系變量 */
         :root {
-            --brand-primary: #2d5016;
-            --brand-light: #4a7c2c;
-            --brand-dark: #1a3009;
-            --brand-accent: #5a8c3a;
+            --brand-primary: #066828;
+            --brand-light: #054726;
+            --brand-dark: #F1F4F1;
             --brand-red: #e1380e;
         }
 
@@ -157,19 +156,45 @@
                 transform: translateY(0);
             }
         }
+
+        /* HTML: <div class="ribbon">Your text content</div> */
+        .ribbon {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .ribbon {
+            --r: .4em;
+            /* control the ribbon shape (the radius) */
+
+            position: absolute;
+            top: -9px;
+            inset-inline: calc(-1*var(--r));
+            text-align: center;
+            line-height: 1.8;
+            padding: 0 .5em calc(2*var(--r));
+            border-radius: var(--r);
+            --_g: 100%/var(--r) calc(2*var(--r)) no-repeat;
+            background:
+                radial-gradient(100% 50% at right, #0005 98%, #0000 101%) 0 var(--_g),
+                radial-gradient(100% 50% at left, #0005 98%, #0000 101%) 100% var(--_g),
+                conic-gradient(from 90deg at var(--r) calc(100% - 2*var(--r)), #0000 25%, var(--brand-light) 0) 0 0/calc(100% - var(--r)) 100%;
+        }
     </style>
+
 </head>
 
 <body class="font-sans m-0 p-0 overflow-x-hidden">
     <!-- Header -->
-    <header class="bg-white shadow-md">
+    <header class="shadow-md bg-[var(--brand-dark)]">
         <div class="max-w-1200px mx-auto px-5">
-            <div class="flex items-center justify-center md:justify-between py-4">
+            <div class="flex items-center justify-center md:justify-between">
                 <!-- Logo -->
-                <div class="logo">
-                    <img src="https://cdn-next.cybassets.com/media/W1siZiIsIjE1MDQ0L2F0dGFjaGVkX3Bob3Rvcy8xNzM2NDk1MzY1X0xPR08tNjB4MzAwLmpwZy5qcGVnIl1d.jpeg?sha=ade855177e45ff85"
-                        alt="大漢酵素" class="h-12 w-auto"
+                <div class="logo flex items-center gap-3">
+                    <img src="./assets/img/logo/LOGO.png" alt="大漢酵素" class="h-20 w-auto"
                         onerror="this.src='./assets/img/logo/1736495365_LOGO-60x300.jpg.avif'">
+                    <h2 class="text-[var(--brand-primary)] font-bold my-0">官方旗艦館</h2>
                 </div>
 
                 <!-- Navigation -->
@@ -194,18 +219,22 @@
         </div>
     </header>
     <!-- Navigation -->
-    <nav class="bg-[var(--brand-dark)] md:hidden flex p-2 gap-8 justify-center list-none text-center text-sm">
-        <li><a href="#"
-                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">館長推薦</a>
+    <nav
+        class="bg-[var(--brand-primary)] md:hidden grid grid-cols-4 p-2 py-4 list-none text-center text-sm border-b border-gray-200 w-full">
+        <li class="border-gray-200 border-r-1 border-r-solid ">
+            <a href="#" class="text-[var(--brand-dark)] font-medium no-underline transition-colors">館長推薦</a>
         </li>
-        <li><a href="#all_store_discounts"
-                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">全館優惠</a>
+        <li class="border-gray-200 border-r-1 border-r-solid ">
+            <a href="#all_store_discounts"
+                class="text-[var(--brand-dark)] font-medium no-underline transition-colors">全館優惠</a>
         </li>
-        <li><a href="#main_combination"
-                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">主打組合</a>
+        <li class="border-gray-200 border-r-1 border-r-solid ">
+            <a href="#main_combination"
+                class="text-[var(--brand-dark)] font-medium no-underline transition-colors">主打組合</a>
         </li>
-        <li><a href="#highly_recommended"
-                class="text-white font-medium no-underline hover:text-[var(--brand-accent)] transition-colors">好評推薦</a>
+        <li>
+            <a href="#highly_recommended"
+                class="text-[var(--brand-dark)] font-medium no-underline transition-colors">好評推薦</a>
         </li>
     </nav>
 
@@ -241,111 +270,47 @@
             <div class="swiper-button-next"></div>
         </div>
     </section>
-    <!-- All Store Discounts -->
-    <section id="all_store_discounts" class="px-5 py-20 bg-[rgb(245,183,183)]">
-        <h2 class="text-[var(--brand-primary)] text-[48px] leading-[50px] my-0 font-bold text-center">全館優惠</h2>
-        <h3 class="text-[var(--brand-accent)] text-center mb-10">迎新春加碼活動</h3>
-        <div class="max-w-1200px mx-auto mt-4 mb-10">
-            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 justify-center flex-wrap">
+
+    <!-- Limited-time offer -->
+    <section id="limited_time_offer" class="bg-[var(--brand-primary)]">
+        <div class="max-w-1200px mx-auto px-5 py-10">
+            <h2 class="text-white my-0 text-[28px] leading-[56px] font-bold text-center mb-8">4/19-4/22限定優惠</h2>
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                 <div
-                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
-                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
-                        src="./assets/img/all_store_discounts/product1.avif" alt="">
-                    <i
-                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                    class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
+                    <div class="ribbon">下單送</div>
+                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
                 </div>
                 <div
-                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
-                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
-                        src="./assets/img/all_store_discounts/product2.avif" alt="">
-                    <i
-                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                    class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
+                    <div class="ribbon">滿3000送</div>
+                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
                 </div>
                 <div
-                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
-                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
-                        src="./assets/img/all_store_discounts/product3.avif" alt="">
-                    <i
-                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                    class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
+                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
+                    <div class="ribbon">滿5999送</div>
                 </div>
                 <div
-                    class="overflow-hidden cursor-pointer after:content-[''] group after:block after:w-full after:h-full after:hover:bg-white/30 after:duration-200 after:absolute after:inset-0 relative">
-                    <img class="w-full group-hover:scale-102 transition-transform duration-300"
-                        src="./assets/img/all_store_discounts/product4.avif" alt="">
-                    <i
-                        class="bi bi-zoom-in text-[40px] absolute top-1/2 left-1/2 group-hover:block hidden text-[var(--brand-primary)] duration-200 -translate-x-1/2 -translate-y-1/2"></i>
+                    class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
+                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
+                    <div class="ribbon">滿8000送</div>
                 </div>
             </div>
+            
+
         </div>
     </section>
-    <!-- Main combination -->
-    <section id="main_combination" class="px-5 py-20 bg-[rgb(245,183,183)]">
-        <h2 class="text-[var(--brand-primary)] my-0 text-[48px] leading-[50px] font-bold text-center mb-10">主打組合</h2>
 
+    <!-- video section -->
+    <section id="highly_recommended" class="px-5 py-10 bg-[var(--brand-primary)]">
         <div class="max-w-1200px mx-auto">
-            <!-- 頁籤導航 -->
-            <div class="flex justify-center gap-4 mb-8 flex-wrap">
-                <button v-for="(tab, index) in tabs" :key="tab.id" @click="switchToTab(index)"
-                    :class="['tab-btn', 'px-8', 'py-3', 'bg-white', 'text-[var(--brand-primary)]', 'font-medium', 'rounded-lg', 'border-2', 'border-[var(--brand-primary)]', 'hover:bg-[var(--brand-primary)]', 'hover:text-white', 'transition-all', 'cursor-pointer', { 'active': activeIndex === index }]">
-                    {{ tab.name }}
-                </button>
-            </div>
-
-            <!-- 頁籤內容容器 -->
-            <div class="vue-tab-container relative min-h-[600px]">
-                <!-- 導航按鈕 -->
-                <button @click="prevTab"
-                    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center text-[var(--brand-primary)] hover:text-[var(--brand-accent)] transition-all shadow-md hover:shadow-lg">
-                    <i class="bi bi-chevron-left text-2xl"></i>
-                </button>
-                <button @click="nextTab"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center text-[var(--brand-primary)] hover:text-[var(--brand-accent)] transition-all shadow-md hover:shadow-lg">
-                    <i class="bi bi-chevron-right text-2xl"></i>
-                </button>
-
-                <!-- Transition 包裹的內容 -->
-                <transition :name="transitionName" mode="out-in">
-                    <div :key="activeIndex" class="vue-tab-content">
-                        <div class="bg-white rounded-lg p-8 shadow-lg">
-                            <h3 class="text-3xl font-bold text-[var(--brand-primary)] mb-4 text-center">{{
-                                currentTab.title }}</h3>
-                            <p class="text-gray-600 mb-8 text-center text-lg">{{ currentTab.description }}</p>
-
-                            <!-- 商品列表 -->
-                            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
-                                <div v-for="(item, index) in currentTab.items" :key="index"
-                                    class="flex flex-col items-center p-6 bg-gray-50 rounded-lg hover:shadow-xl transition-shadow">
-                                    <div
-                                        class="w-full h-[200px] bg-gradient-to-br from-[var(--brand-light)] to-[var(--brand-accent)] rounded-lg mb-4 flex items-center justify-center">
-                                        <i class="bi bi-box-seam text-white text-[60px]"></i>
-                                    </div>
-                                    <h4 class="text-xl font-bold text-[var(--brand-primary)] mb-2 text-center">{{
-                                        item.name }}</h4>
-                                    <p class="text-gray-600 text-sm mb-3 text-center">{{ item.description }}</p>
-                                    <div class="text-2xl font-bold text-[var(--brand-red)] mb-4">${{ item.price }}</div>
-                                    <button
-                                        class="bg-[var(--brand-primary)] text-white px-6 py-2 rounded-lg hover:bg-[var(--brand-accent)] transition-colors font-medium w-full">
-                                        立即選購
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </transition>
-            </div>
-        </div>
-    </section>
-    <!-- Highly recommended -->
-    <section id="highly_recommended" class="px-5 py-20 ">
-        <h2 class="text-[var(--brand-primary)] my-0 text-[48px] leading-[50px] font-bold text-center mb-10">好評推薦</h2>
-        <div class="max-w-1200px mx-auto">
-            <div class="grid lg:grid-cols-2 grid-cols-1 justify-center flex-wrap">
-                <iframe class="w-full h-[574px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A" title="影片標題"
+            <div class="grid grid-cols-1 justify-center flex-wrap rounded overflow-hidden shadow-lg">
+                <iframe class="w-full min-h-[300px] h-[568px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A" title="影片標題"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
-                <img class="w-full" src="./assets/img/highly_recommended/momo02-100.jpg" alt="">
             </div>
         </div>
     </section>
