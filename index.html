@@ -33,6 +33,10 @@
             --brand-red: #e1380e;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         /* Swiper按鈕自訂樣式 */
         .swiper-button-prev,
         .swiper-button-next {
@@ -179,7 +183,7 @@
             background:
                 radial-gradient(100% 50% at right, #0005 98%, #0000 101%) 0 var(--_g),
                 radial-gradient(100% 50% at left, #0005 98%, #0000 101%) 100% var(--_g),
-                conic-gradient(from 90deg at var(--r) calc(100% - 2*var(--r)), #0000 25%, var(--brand-light) 0) 0 0/calc(100% - var(--r)) 100%;
+                conic-gradient(from 90deg at var(--r) calc(100% - 2*var(--r)), #0000 25%, var(--brand-primary) 0) 0 0/calc(100% - var(--r)) 100%;
         }
     </style>
 
@@ -239,8 +243,8 @@
     </nav>
 
     <!-- Hero Section - Swiper Carousel -->
-    <section id="hero" class="relative aspect-[9/16] md:aspect-[16/9]">
-        <div class="swiper hero-swiper w-full h-full">
+    <section id="hero" class="relative aspect-[9/16] md:aspect-[16/9] overflow-hidden">
+        <div class="swiper hero-swiper w-full h-full bg-[var(--brand-dark)]">
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
                 <div class="swiper-slide">
@@ -259,7 +263,7 @@
                 <!-- Slide 3 -->
                 <div class="swiper-slide">
                     <div
-                        class="hero-slide h-full flex items-center relative overflow-hidden md:bg-[url('./assets/img/hero/202601-3.jpg')] bg-[url('./assets/img/hero/202601-3-sm.jpg')] bg-center bg-cover">
+                        class="hero-slide h-full flex items-center relative overflow-hidden md:bg-[url('./assets/img/hero/202601-3.jpg')] bg-[url(./assets/img/hero/202601-3-sm.jpg)] bg-center bg-cover">
                     </div>
                 </div>
             </div>
@@ -272,47 +276,338 @@
     </section>
 
     <!-- Limited-time offer -->
-    <section id="limited_time_offer" class="bg-[var(--brand-primary)]">
-        <div class="max-w-1200px mx-auto px-5 py-10">
-            <h2 class="text-white my-0 text-[28px] leading-[56px] font-bold text-center mb-8">4/19-4/22限定優惠</h2>
+    <section id="limited_time_offer" class="bg-[var(--brand-dark)] py-10">
+        <div class="max-w-1200px mx-auto px-5">
+            <h2 class="text-[var(--brand-primary)] my-0 text-[28px] leading-[56px] font-bold text-center mb-8">
+                4/19-4/22限定優惠</h2>
             <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                 <div
                     class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
                     <div class="ribbon">下單送</div>
-                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
+                    <img class="w-full h-full"
+                        src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
                 </div>
                 <div
                     class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
                     <div class="ribbon">滿3000送</div>
-                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
+                    <img class="w-full h-full"
+                        src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
                 </div>
                 <div
                     class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
-                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
+                    <img class="w-full h-full"
+                        src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
                     <div class="ribbon">滿5999送</div>
                 </div>
                 <div
                     class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
-                    <img class="w-full h-full" src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
+                    <img class="w-full h-full"
+                        src="https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp" alt="">
                     <div class="ribbon">滿8000送</div>
                 </div>
             </div>
-            
-
         </div>
     </section>
 
     <!-- video section -->
-    <section id="highly_recommended" class="px-5 py-10 bg-[var(--brand-primary)]">
-        <div class="max-w-1200px mx-auto">
-            <div class="grid grid-cols-1 justify-center flex-wrap rounded overflow-hidden shadow-lg">
-                <iframe class="w-full min-h-[300px] h-[568px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A" title="影片標題"
-                    frameborder="0"
+    <section id="highly_recommended" class="px-10 bg-[var(--brand-dark)] pb-10">
+        <div class="max-w-960px mx-auto">
+            <div class="grid grid-cols-1 justify-center flex-wrap rounded-[12px] overflow-hidden shadow-lg">
+                <iframe class="w-full h-[300px] md:h-[568px]" src="https://www.youtube.com/embed/JKkuTds601g"
+                    title="影片標題" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
             </div>
         </div>
+    </section>
+
+    <!-- banner -->
+    <section class="bg-[var(--brand-dark)] pb-10">
+        <div class="max-w-1200px mx-auto px-5">
+            <div class="w-full rounded overflow-hidden">
+                <img class="w-full h-auto block" src="./assets/img/banner/BrandIntroduction.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- 文案介紹 -->
+    <section class="bg-white py-14">
+        <div class="max-w-1200px mx-auto px-5">
+            <div class="grid grid-cols-2 mb-20">
+                <div>
+                    <img class="block w-full" src="./assets/img/banner/grape.jpg" alt="">
+                </div>
+                <div class="bg-[var(--brand-dark)] grow-1">
+                    <div class="text-[var(--brand-light)] p-10 pt-20%">
+                        <h3 class="font-black  text-[24px] my-0 mb-10">來自土地，最深刻的幸福連結</h3>
+                        <p class="font-bold my-0 text-[14px]">「來自大地的營養，最真實。」創辦人始終堅持，精選天然蔬果，才能
+                            釀造最好的植物精華。每一滴營養，皆來自大地之母的恩惠，收納台
+                            灣的高山、平原、沿海以及內地，四方濃縮寶島的驕傲與生命力，我
+                            們與您細細品嘗這份美好。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 mb-20">
+                <div class="bg-[var(--brand-dark)] grow-1">
+                    <div class="text-[var(--brand-light)] p-10 pt-14% text-center">
+                        <h3 class="font-black text-[24px] my-0 text-center mb-10">綠色工廠，與自然同在</h3>
+                        <p class="font-bold my-0 text-[14px] text-left mb-4">「來自大地的營養，最真實。」創辦人始終堅持，精選天然蔬果，才能
+                            身為世界最大自然素材供應商，大漢酵素以身作則，打造「綠循環能
+                            源」(Green Cycle)，多年來精進古法釀製、科學管控，將蔬果與獨家工
+                            法深度結合。優質蔬果醱酵後，成為營養滿點的天然肥料，我們將肥
+                            料回饋農民，並傳授微生物知識與技術，讓大地喘息與再生，形成良
+                            善循環；土壤生生不息、蔬果日益茁壯、營養濃縮精萃、您我健康長遠。<br />
+                            我們俸上自然之作給您，同時保護著孕育我們的土地。</p>
+                        <a href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"
+                            class="bg-[var(--brand-light)] text-[var(--brand-dark)] font-bold py-2 px-4 rounded w-[8rem] text-center inline-block hover:translate-y-[-5px] transition-transform">了解更多</a>
+                    </div>
+                </div>
+                <div>
+                    <img class="block w-full" src="./assets/img/banner/FermentationChamber.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="max-w-960px mx-auto px-5">
+            <div class="w-full rounded overflow-hidden">
+                <img class="block w-full" src="./assets/img/banner/ResearchAndDevelopment.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- videos section -->
+    <section class="bg-[var(--brand-dark)] py-20">
+        <div class="max-w-1280px mx-auto px-5">
+            <div class="grid grid-cols-3 gap-10">
+                <div class="rounded-[12px] overflow-hidden shadow-lg">
+                    <iframe class="w-full h-[300px] md:h-[568px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A"
+                        title="影片標題" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="rounded-[12px] overflow-hidden shadow-lg">
+                    <iframe class="w-full h-[300px] md:h-[568px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A"
+                        title="影片標題" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="rounded-[12px] overflow-hidden shadow-lg">
+                    <iframe class="w-full h-[300px] md:h-[568px]" src="https://www.youtube.com/embed/xtP6FA7Hn2A"
+                        title="影片標題" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- products -->
+    <section class="px-10 bg-[var(--brand-dark)] pb-10">
+        <div class="max-w-1200px mx-auto px-5">
+            <div class="rounded-16px bg-white p-5 shadow-lg mb-10">
+                <div class="rounded-t-16px overflow-hidden">
+                    <img class="w-full" src="./assets/img/hero/202604-MOMO全聯品牌旗艦館產品分類順暢BN-1920x1080.jpg" alt="">
+                </div>
+                <div class="grid grid-cols-4 gap-5">
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i2.momoshop.com.tw/1769049392/goodsimg/0013/443/782/13443782_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            暢速樂</h4>
+                        <p class="text-center my-0 font-bold">蔬果醱酵順暢</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i2.momoshop.com.tw/1769049392/goodsimg/0013/443/782/13443782_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            暢速樂</h4>
+                        <p class="text-center my-0 font-bold">蔬果醱酵順暢</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i2.momoshop.com.tw/1769049392/goodsimg/0013/443/782/13443782_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            暢速樂</h4>
+                        <p class="text-center my-0 font-bold">蔬果醱酵順暢</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i2.momoshop.com.tw/1769049392/goodsimg/0013/443/782/13443782_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            暢速樂</h4>
+                        <p class="text-center my-0 font-bold">蔬果醱酵順暢</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-16px bg-white p-5 shadow-lg mb-10">
+                <div class="rounded-t-16px overflow-hidden">
+                    <img class="w-full" src="./assets/img/hero/202604-MOMO全聯品牌旗艦館產品分類BN-1920x1080.jpg" alt="">
+                </div>
+                <div class="grid grid-cols-4 gap-5">
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-16px bg-white p-5 shadow-lg mb-10">
+                <div class="rounded-t-16px overflow-hidden">
+                    <img class="w-full" src="./assets/img/hero/202604-MOMO全聯品牌旗艦館產品分類女神BN-1920x1080.jpg" alt="">
+                </div>
+                <div class="grid grid-cols-4 gap-5">
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-16px bg-white p-5 shadow-lg mb-10">
+                <div class="rounded-t-16px overflow-hidden">
+                    <img class="w-full" src="./assets/img/hero/202604-MOMO全聯品牌旗艦館產品分類禮盒BN-1920x1080.jpg" alt="">
+                </div>
+                <div class="grid grid-cols-4 gap-5">
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                    <div class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
+                        <img class="w-full"
+                            src="https://i1.momoshop.com.tw/1769049427/goodsimg/0010/399/791/10399791_R.webp" alt="">
+                        <h4
+                            class="text-center font-black text-[var(--brand-primary)] text-[20px] my-0 group-hover:text-[var(--brand-light)]">
+                            好舒敏</h4>
+                        <p class="text-center my-0 font-bold">EX超酵益生菌</p>
+                        <a class="absolute inset-0"
+                            href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- more -->
+    <section class="px-10 bg-[var(--brand-dark)] pb-10">
+        <a href="https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=c
+hessboardType"
+            class="flex bg-[var(--brand-primary)] p-10 w-40% max-w-576px mx-auto items-center justify-center gap-6 rounded-136px hover:translate-y-[-5px] transition-transform">
+            <div class="w-40%">
+                <img class="w-full object-cover h-130px" src="./assets/img/logo/white-LOGO.png" alt="">
+            </div>
+            <p class="text-white text-center text-[48px] my-0 font-bold">更多資訊</p>
+        </a>
     </section>
 
     <!-- Swiper JS -->
