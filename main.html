@@ -269,9 +269,10 @@
                     {{ data.limitedTimeOffer.title }}</h2>
                 <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                     <div v-for="item in data.limitedTimeOffer.items" :key="item.id"
-                        class="bg-white relative min-h-50 border border-white border-solid rounded-lg flex items-center justify-center">
+                        class="bg-white relative border border-white border-solid rounded-lg">
                         <div class="ribbon">{{ item.ribbon }}</div>
                         <img class="w-full h-full" :src="item.image" :alt="item.alt">
+                        <h3 class="text-[var(--brand-primary)] absolute bottom-2 left-0 right-0 font-bold my-0 text-[20px] text-center">{{ item.alt }}</h3>
                         <a class="absolute inset-0" :href="item.link"></a>
                     </div>
                 </div>
@@ -450,31 +451,31 @@
                             items: [
                                 {
                                     id: 1,
-                                    ribbon: '下單送',
-                                    image: 'https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp',
+                                    ribbon: '滿3000送',
+                                    image: './images/LALAEX.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '下單送好禮'
+                                    alt: 'LALA EX 體驗包'
                                 },
                                 {
                                     id: 2,
-                                    ribbon: '滿3000送',
-                                    image: 'https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp',
+                                    ribbon: '滿5999送',
+                                    image: './images/SYA.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '滿3000送好禮'
+                                    alt: '夜纖酵飲'
                                 },
                                 {
                                     id: 3,
-                                    ribbon: '滿5999送',
-                                    image: 'https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp',
+                                    ribbon: '滿8000送',
+                                    image: './images/v52.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '滿5999送好禮'
+                                    alt: 'v52 PLUS'
                                 },
                                 {
                                     id: 4,
-                                    ribbon: '滿8000送',
-                                    image: 'https://i4.momoshop.com.tw/1775126998/goodsimg/0014/100/410/14100410_R.webp',
+                                    ribbon: '下單送',
+                                    image: './images/points100.png',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '滿8000送好禮'
+                                    alt: '100 MOMO 購物金'
                                 }
                             ]
                         },
