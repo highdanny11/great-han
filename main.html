@@ -269,7 +269,7 @@
                     {{ data.limitedTimeOffer.title }}</h2>
                 <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                     <div v-for="item in data.limitedTimeOffer.items" :key="item.id"
-                        class="bg-white relative border border-white border-solid rounded-lg">
+                        class="bg-white relative border border-white border-solid rounded-lg pt-5">
                         <div class="ribbon">{{ item.ribbon }}</div>
                         <img class="w-full h-full" :src="item.image" :alt="item.alt">
                         <h3 class="text-[var(--brand-primary)] absolute md:bottom-2 bottom-1 left-0 right-0 font-bold my-0 md:text-[20px] text-[16px] text-center">{{ item.alt }}</h3>
