@@ -224,26 +224,30 @@
                     <div class="logo flex items-center gap-3">
                         <img :src="data.logo.main" alt="大漢酵素" class="h-20 w-auto"
                             @error="$event.target.src=data.logo.fallback">
-                        <h2 class="text-[var(--brand-primary)] font-bold my-0 text-[28px]">官方旗艦館</h2>
+                        <h2 class="text-[var(--brand-primary)] font-bold my-0 md:text-[28px] text-[20px]">大漢酵素 官方旗艦館
+                        </h2>
                     </div>
                 </div>
             </div>
         </header>
         <!-- Navigation -->
-        <nav
-            class="bg-[var(--brand-primary)] grid grid-cols-4 py-4 list-none text-center text-sm border-b border-gray-200 w-full">
-            <li v-for="(item, index) in data.navigation" :key="index"
-                :class="{'border-gray-200 border-r-1 border-r-solid': index < data.navigation.length - 1}">
-                <a :href="item.href"
-                    class="text-white hover:text-[var(--brand-dark)] font-bold md:text-[20px] text-[16px] no-underline transition-colors">{{
-                    item.name }}</a>
-            </li>
+        <nav class="bg-[var(--brand-primary)]">
+            <ul
+                class="max-w-1680px mx-auto my-0 grid px-5 py-4 grid-cols-4 list-none text-center text-sm border-b border-gray-200">
+                <li v-for="(item, index) in data.navigation" :key="index"
+                    :class="{'border-gray-200 border-r-1 border-r-solid': index < data.navigation.length - 1}">
+                    <a :href="item.href"
+                        class="text-white font-bold md:text-[20px] text-[16px] no-underline transition-colors">{{
+                        item.name }}</a>
+                </li>
+            </ul>
+
         </nav>
 
         <!-- Hero Section - Swiper Carousel -->
-        <section id="hero" class="relative w-full">
-            <div class="swiper w-full bg-[var(--brand-dark)]">
-                <div class="swiper-wrapper">
+        <section id="hero" class="relative w-full bg-[var(--brand-dark)]">
+            <div class="swiper max-w-1680px mx-auto">
+                <div class="swiper-wrapper ">
                     <!-- Slides -->
                     <div v-for="slide in data.heroSlides" :key="slide.id" class="swiper-slide relative">
                         <picture>
@@ -263,16 +267,18 @@
         </section>
 
         <!-- Limited-time offer -->
-        <section id="limited_time_offer" class="bg-[var(--brand-dark)] py-10">
+        <section id="limited_time_offer" class="bg-[var(--brand-dark)] pt-10 pb-20">
             <div class="max-w-1200px mx-auto px-5">
-                <h2 class="text-[var(--brand-primary)] my-0 text-[28px] leading-[56px] font-bold text-center mb-8">
+                <h2 class="text-[var(--brand-primary)] my-0 text-[28px] leading-[56px] font-bold text-center mb-4">
                     {{ data.limitedTimeOffer.title }}</h2>
                 <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                     <div v-for="item in data.limitedTimeOffer.items" :key="item.id"
                         class="bg-white relative border border-white border-solid rounded-lg pt-5">
                         <div class="ribbon">{{ item.ribbon }}</div>
                         <img class="w-full h-full" :src="item.image" :alt="item.alt">
-                        <h3 class="text-[var(--brand-primary)] absolute md:bottom-2 bottom-1 left-0 right-0 font-bold my-0 md:text-[20px] text-[16px] text-center">{{ item.alt }}</h3>
+                        <h3
+                            class="text-[var(--brand-primary)] absolute md:bottom-2 bottom-1 left-0 right-0 font-bold my-0 md:text-[20px] text-[16px] text-center">
+                            {{ item.alt }}</h3>
                         <a class="absolute inset-0" :href="item.link"></a>
                     </div>
                 </div>
@@ -302,9 +308,9 @@
         </section>
 
         <!-- 文案介紹 -->
-        <section class="bg-[var(--brand-dark)] py-14">
+        <section class="bg-[var(--brand-dark)] py-10">
             <div class="max-w-1200px mx-auto px-5">
-                <div class="grid md:grid-cols-2 grid-cols-1 mb-20 rounded-[12px] overflow-hidden shadow">
+                <div class="grid md:grid-cols-2 grid-cols-1 mb-10 rounded-[12px] overflow-hidden shadow">
                     <div class="grow-1">
                         <img class="block w-full h-full" :src="data.banners.grape" alt="葡萄">
                     </div>
@@ -332,16 +338,16 @@
                     </div>
                 </div>
             </div>
-            <div class="max-w-1200px mx-auto px-5">
-                <div class="w-full rounded overflow-hidden">
-                    <img class="block w-full" :src="data.banners.researchAndDevelopment" alt="研發中心">
-                </div>
-            </div>
         </section>
 
         <!-- videos section -->
-        <section class="bg-[var(--brand-dark)] py-20">
+        <section class="bg-[var(--brand-dark)] pb-20">
             <div class="max-w-1280px mx-auto px-5">
+                <div class="max-w-1200px mx-auto px-5 mb-10">
+                    <div class="w-full rounded overflow-hidden">
+                        <img class="block w-full" :src="data.banners.researchAndDevelopment" alt="研發中心">
+                    </div>
+                </div>
                 <div class="grid grid-cols-3 lg:gap-10 gap-5">
                     <div v-for="video in data.videos.additional" :key="video.id"
                         class="rounded-[12px] overflow-hidden shadow-lg">
@@ -414,7 +420,7 @@
 
                         // 導航連結
                         navigation: [
-                            { name: '館長推薦', href: '#' },
+                            { name: '熱銷首選 ', href: '#' },
                             { name: '全館優惠', href: '#all_store_discounts' },
                             { name: '主打組合', href: '#main_products' },
                             { name: '好評推薦', href: '#highly_recommended' }
@@ -447,35 +453,35 @@
 
                         // 限時優惠
                         limitedTimeOffer: {
-                            title: '4/19-4/22限定優惠',
+                            title: '6/1-6/21限定優惠',
                             items: [
                                 {
                                     id: 1,
-                                    ribbon: '滿3000送',
+                                    ribbon: '下單送',
                                     image: './images/LALAEX.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: 'LALA EX 體驗包'
                                 },
                                 {
                                     id: 2,
-                                    ribbon: '滿5999送',
+                                    ribbon: '滿2888送',
                                     image: './images/SYA.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: '夜纖酵飲'
                                 },
                                 {
                                     id: 3,
-                                    ribbon: '滿8000送',
+                                    ribbon: '滿3888送',
                                     image: './images/v52.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: 'v52 PLUS'
                                 },
                                 {
                                     id: 4,
-                                    ribbon: '下單送',
+                                    ribbon: '滿5888送',
                                     image: './images/points100.png',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '100 MOMO 購物金'
+                                    alt: '100MO點'
                                 }
                             ]
                         },
