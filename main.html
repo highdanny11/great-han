@@ -302,7 +302,11 @@
         <section class="bg-[var(--brand-dark)] pb-10">
             <div class="max-w-1200px mx-auto px-5">
                 <div class="w-full rounded overflow-hidden">
-                    <img class="w-full h-auto block" :src="data.banners.brandIntroduction" alt="品牌介紹">
+                    <picture>
+                        <source media="(min-width: 768px)" :srcset="data.banners.brandIntroduction.desktop">
+                        <source media="(max-width: 767px)" :srcset="data.banners.brandIntroduction.mobile">
+                        <img class="w-full h-auto block" :src="data.banners.brandIntroduction.desktop" alt="品牌介紹">
+                    </picture>
                 </div>
             </div>
         </section>
@@ -316,8 +320,8 @@
                     </div>
                     <div class="bg-white grow-1">
                         <div class="text-[var(--brand-light)] p-10 pt-20%">
-                            <h3 class="font-black  text-[24px] my-0 mb-10">{{ data.brandContent.story1.title }}</h3>
-                            <p class="font-bold my-0 text-[18px]">{{ data.brandContent.story1.description }}</p>
+                            <h3 class="font-black text-[24px] my-0 mb-10">{{ data.brandContent.story1.title }}</h3>
+                            <p class="my-0 text-[18px]">{{ data.brandContent.story1.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -326,7 +330,7 @@
                         <div class="text-[var(--brand-light)] p-10 pt-14% text-center">
                             <h3 class="font-black text-[24px] my-0 text-center mb-10">{{ data.brandContent.story2.title
                                 }}</h3>
-                            <p class="font-bold my-0 text-[18px] text-left mb-4" style="white-space: pre-line;">{{
+                            <p class="my-0 text-[18px] text-left mb-4" style="white-space: pre-line;">{{
                                 data.brandContent.story2.description }}</p>
                             <a :href="data.brandContent.story2.ctaLink"
                                 class="bg-[var(--brand-light)] text-[var(--brand-dark)] font-bold py-2 px-4 rounded w-[8rem] text-center inline-block hover:translate-y-[-5px] transition-transform">{{
@@ -345,7 +349,11 @@
             <div class="max-w-1280px mx-auto px-5">
                 <div class="max-w-1200px mx-auto px-5 mb-10">
                     <div class="w-full rounded overflow-hidden">
-                        <img class="block w-full" :src="data.banners.researchAndDevelopment" alt="研發中心">
+                        <picture>
+                            <source media="(min-width: 768px)" :srcset="data.banners.researchAndDevelopment.desktop">
+                            <source media="(max-width: 767px)" :srcset="data.banners.researchAndDevelopment.mobile">
+                            <img class="block w-full" :src="data.banners.researchAndDevelopment.desktop" alt="研發中心">
+                        </picture>
                     </div>
                 </div>
                 <div class="grid grid-cols-3 lg:gap-10 gap-5">
@@ -430,7 +438,7 @@
                         heroSlides: [
                             {
                                 id: 1,
-                                desktop: './images/hero4.jpg',
+                                desktop: './images/hero1.jpg',
                                 mobile: './images/hero1mobile.jpg',
                                 link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                 alt: '大漢酵素優惠活動 1'
@@ -448,6 +456,20 @@
                                 mobile: './images/hero3mobile.jpg',
                                 link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                 alt: '大漢酵素優惠活動 3'
+                            },
+                            {
+                                id: 4,
+                                desktop: './images/hero4.jpg',
+                                mobile: './images/hero4mobile.jpg',
+                                link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
+                                alt: '大漢酵素優惠活動 4'
+                            },
+                            {
+                                id: 5,
+                                desktop: './images/hero5.jpg',
+                                mobile: './images/hero5mobile.jpg',
+                                link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
+                                alt: '大漢酵素優惠活動 5'
                             }
                         ],
 
@@ -514,10 +536,16 @@
 
                         // Banner 圖片
                         banners: {
-                            brandIntroduction: './images/bannerbrandintroduction.jpg',
+                            brandIntroduction: {
+                                desktop: './images/bannerbrandintroduction.jpg',
+                                mobile: './images/bannerbrandintroduction_960x1200.jpg'
+                            },
                             grape: './images/bannergrape.jpg',
                             fermentationChamber: './images/bannerfermentationchamber.jpg',
-                            researchAndDevelopment: './images/bannerresearchanddevelopment.jpg'
+                            researchAndDevelopment: {
+                                desktop: './images/bannerresearchanddevelopment.jpg',
+                                mobile: './images/bannerresearchanddevelopment_960x1200.jpg'
+                            }
                         },
 
                         // 產品區塊
@@ -695,7 +723,7 @@
                             },
                             story2: {
                                 title: '綠色工廠，與自然同在',
-                                description: '「來自大地的營養，最真實。」創辦人始終堅持，精選天然蔬果，才能身為世界最大自然素材供應商，大漢酵素以身作則，打造「綠循環能源」(Green Cycle)，多年來精進古法釀製、科學管控，將蔬果與獨家工法深度結合。優質蔬果醱酵後，成為營養滿點的天然肥料，我們將肥料回饋農民，並傳授微生物知識與技術，讓大地喘息與再生，形成良善循環；土壤生生不息、蔬果日益茁壯、營養濃縮精萃、您我健康長遠。\n我們俸上自然之作給您，同時保護著孕育我們的土地。',
+                                description: '「身為世界最大自然素材供應商，大漢酵素以身作則，打造「綠循環能源」(Green Cycle)，多年來精進古法釀製、科學管控，將蔬果與獨家工法深度結合。優質蔬果醱酵後，成為營養滿點的天然肥料，我們將肥料回饋農民，並傳授微生物知識與技術，讓大地喘息與再生，形成良善循環；土壤生生不息、蔬果日益茁壯、營養濃縮精萃、您我健康長遠。\n我們俸上自然之作給您，同時保護著孕育我們的土地。',
                                 ctaText: '了解更多',
                                 ctaLink: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType'
                             }
