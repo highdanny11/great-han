@@ -286,9 +286,9 @@
         </section>
 
         <!-- video section -->
-        <section id="highly_recommended" class="px-10 bg-[var(--brand-dark)] pb-10">
-            <div class="max-w-960px mx-auto">
-                <div class="grid grid-cols-1 justify-center flex-wrap rounded-[12px] overflow-hidden shadow-lg">
+        <section id="highly_recommended" class="px-5 bg-[var(--brand-dark)] pb-10">
+            <div class="max-w-1200px mx-auto">
+                <div class="grid grid-cols-1 justify-center flex-wrap rounded-[12px] overflow-hidden shadow-lg bg-white p-2">
                     <iframe class="w-full h-[300px] md:h-[568px]" :src="data.videos.main.embedUrl"
                         :title="data.videos.main.title" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -301,7 +301,7 @@
         <!-- banner -->
         <section class="bg-[var(--brand-dark)] pb-10">
             <div class="max-w-1200px mx-auto px-5">
-                <div class="w-full rounded overflow-hidden">
+                <div class="rounded overflow-hidden bg-white p-2">
                     <picture>
                         <source media="(min-width: 768px)" :srcset="data.banners.brandIntroduction.desktop">
                         <source media="(max-width: 767px)" :srcset="data.banners.brandIntroduction.mobile">
@@ -314,9 +314,11 @@
         <!-- 文案介紹 -->
         <section class="bg-[var(--brand-dark)] py-10">
             <div class="max-w-1200px mx-auto px-5">
-                <div class="grid md:grid-cols-2 grid-cols-1 mb-10 rounded-[12px] overflow-hidden shadow">
+                <div class="grid lg:grid-cols-2 grid-cols-1 mb-10 rounded overflow-hidden shadow p-2 bg-white">
                     <div class="grow-1">
-                        <img class="block w-full h-full" :src="data.banners.grape" alt="葡萄">
+                        <div class="rounded overflow-hidden">
+                            <img class="block w-full h-full" :src="data.banners.grape" alt="葡萄">
+                        </div>
                     </div>
                     <div class="bg-white grow-1">
                         <div class="text-[var(--brand-light)] p-10 pt-20%">
@@ -325,8 +327,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 grid-cols-1 mb-20 rounded-[12px] overflow-hidden shadow">
-                    <div class="bg-white grow-1 order-last md:order-first">
+                <div class="grid lg:grid-cols-2 grid-cols-1 mb-20 rounded-[12px] overflow-hidden shadow p-2 bg-white">
+                    <div class="bg-white grow-1 order-last lg:order-first">
                         <div class="text-[var(--brand-light)] p-10 pt-14% text-center">
                             <h3 class="font-black text-[24px] my-0 text-center mb-10">{{ data.brandContent.story2.title
                                 }}</h3>
@@ -338,7 +340,9 @@
                         </div>
                     </div>
                     <div class="grow-1">
-                        <img class="block w-full h-full" :src="data.banners.fermentationChamber" alt="發酵槽">
+                        <div class="rounded-[12px] overflow-hidden">
+                            <img class="block w-full h-full" :src="data.banners.fermentationChamber" alt="發酵槽">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,8 +350,8 @@
 
         <!-- videos section -->
         <section class="bg-[var(--brand-dark)] pb-20">
-            <div class="max-w-1280px mx-auto px-5">
-                <div class="max-w-1200px mx-auto px-5 mb-10">
+            <div class="max-w-1200px mx-auto px-5">
+                <div class="mb-10 rounded overflow-hidden bg-white p-2">
                     <div class="w-full rounded overflow-hidden">
                         <picture>
                             <source media="(min-width: 768px)" :srcset="data.banners.researchAndDevelopment.desktop">
@@ -358,8 +362,8 @@
                 </div>
                 <div class="grid grid-cols-3 lg:gap-10 gap-5">
                     <div v-for="video in data.videos.additional" :key="video.id"
-                        class="rounded-[12px] overflow-hidden shadow-lg">
-                        <iframe class="w-full h-[200px] md:h-[568px]" :src="video.embedUrl" :title="video.title"
+                        class="rounded overflow-hidden shadow-lg">
+                        <iframe class="w-full rounded h-[200px] md:h-[568px]" :src="video.embedUrl" :title="video.title"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -374,9 +378,9 @@
             <div class="max-w-1200px mx-auto">
                 <!-- 使用 v-for 迴圈渲染所有產品區塊 -->
                 <template v-for="(category, key) in data.products" :key="key">
-                    <div :id="category.id" class="rounded-16px bg-white p-5 shadow-lg mb-10">
+                    <div :id="category.id" class="rounded bg-white p-3 shadow-lg mb-10">
                         <!-- Banner -->
-                        <div class="rounded-t-16px overflow-hidden relative">
+                        <div class="rounded-t overflow-hidden relative">
                             <img class="w-full" :src="category.banner.image" :alt="category.banner.alt">
                             <a class="absolute inset-0" :href="category.banner.link"></a>
                         </div>
