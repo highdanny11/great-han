@@ -99,6 +99,34 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
+        /* Coverflow 效果 */
+        #hero {
+            overflow: hidden;
+        }
+
+        #hero .swiper {
+            padding: 40px 0 60px !important;
+            overflow: visible !important;
+        }
+
+        #hero .swiper-slide {
+            width: 65%;
+            max-width: 900px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        #hero .swiper-slide-active {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        #hero .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
         /* 頁籤樣式 */
         .tab-btn {
             position: relative;
@@ -188,7 +216,7 @@
         }
 
         .ribbon {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             color: #fff;
         }
@@ -466,7 +494,7 @@
 
                         // 限時優惠
                         limitedTimeOffer: {
-                            title: '6/1-6/21限定優惠',
+                            title: '7/1-7/31限定優惠',
                             items: [
                                 {
                                     id: 1,
@@ -480,7 +508,7 @@
                                     ribbon: '滿1888送',
                                     image: './images/V52NEWLOGO-60ml-1000x1000.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: 'V52 蔬果植物醱酵液60ML'
+                                    alt: 'V52 蔬果醱酵液60ML'
                                 },
                                 {
                                     id: 3,
@@ -491,7 +519,7 @@
                                 },
                                 {
                                     id: 4,
-                                    ribbon: '滿3888送',
+                                    ribbon: '7.11滿3888送',
                                     image: './images/bowel_movement_smoothing_enzyme-1000x1000.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: '暢速樂'
@@ -815,16 +843,21 @@
                 this.$nextTick(() => {
                     console.log('🎠 初始化 Swiper...');
                     const swiper = new Swiper('.swiper', {
-                        direction: 'horizontal',
+                        effect: 'coverflow',
+                        grabCursor: true,
+                        centeredSlides: true,
+                        slidesPerView: 'auto',
                         loop: true,
                         autoplay: {
-                            delay: 5000,
+                            delay: 3500,
                             disableOnInteraction: false,
                         },
-                        speed: 800,
-                        effect: 'fade',
-                        fadeEffect: {
-                            crossFade: true
+                        coverflowEffect: {
+                            rotate: 30,
+                            stretch: 0,
+                            depth: 200,
+                            modifier: 1,
+                            slideShadows: true,
                         },
                         pagination: {
                             el: '.swiper-pagination',
@@ -833,9 +866,6 @@
                         navigation: {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
-                        },
-                        scrollbar: {
-                            el: '.swiper-scrollbar',
                         },
                     });
                     console.log('✅ Swiper 初始化完成');
