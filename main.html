@@ -99,32 +99,29 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* Coverflow 效果 */
-        #hero {
-            overflow: hidden;
-        }
+        /* Coverflow 效果 - 桌機限定 */
+        @media (min-width: 768px) {
+            #hero .swiper {
+                padding: 40px 0 60px !important;
+                overflow: visible !important;
+            }
 
-        #hero .swiper {
-            padding: 40px 0 60px !important;
-            overflow: visible !important;
-        }
+            #hero .swiper-slide {
+                width: 65%;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+            }
 
-        #hero .swiper-slide {
-            width: 65%;
-            max-width: 900px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-        }
+            #hero .swiper-slide-active {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            }
 
-        #hero .swiper-slide-active {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        #hero .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: auto;
+            #hero .swiper-slide img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
         }
 
         /* 頁籤樣式 */
@@ -343,13 +340,13 @@
         <section class="bg-[var(--brand-dark)] py-10">
             <div class="max-w-1200px mx-auto px-5">
                 <div class="grid lg:grid-cols-2 grid-cols-1 mb-10 rounded overflow-hidden shadow p-2 bg-white">
-                    <div class="bg-white grow-1">
-                        <div class="text-[var(--brand-light)] p-10 pt-20%">
-                            <h3 class="font-black text-[24px] my-0 mb-10">{{ data.brandContent.story1.title }}</h3>
+                    <div class="bg-white grow-1 lg:order-1 order-2">
+                        <div class="text-[var(--brand-light)] p-10 pt-10%">
+                            <h3 class="font-black text-[24px] my-0 mb-10 text-center">{{ data.brandContent.story1.title }}</h3>
                             <p class="my-0 text-[18px]">{{ data.brandContent.story1.description }}</p>
                         </div>
                     </div>
-                    <div class="grow-1">
+                    <div class="grow-1 lg:order-2 order-1">
                         <div class="rounded overflow-hidden">
                             <img class="block w-full h-full" :src="data.banners.grape" alt="葡萄">
                         </div>
@@ -367,12 +364,8 @@
                                 }}</h3>
                             <p class="my-0 text-[18px] text-left mb-4" style="white-space: pre-line;">{{
                                 data.brandContent.story2.description }}</p>
-                            <a :href="data.brandContent.story2.ctaLink"
-                                class="bg-[var(--brand-light)] text-[var(--brand-dark)] font-bold py-2 px-4 rounded w-[8rem] text-center inline-block hover:translate-y-[-5px] transition-transform">{{
-                                data.brandContent.story2.ctaText }}</a>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
@@ -841,23 +834,12 @@
 
                 // 等待 DOM 更新後初始化 Swiper
                 this.$nextTick(() => {
-                    console.log('🎠 初始化 Swiper...');
-                    const swiper = new Swiper('.swiper', {
-                        effect: 'coverflow',
-                        grabCursor: true,
-                        centeredSlides: true,
-                        slidesPerView: 'auto',
+                    const isMobile = window.innerWidth < 768;
+                    const baseConfig = {
                         loop: true,
                         autoplay: {
                             delay: 3500,
                             disableOnInteraction: false,
-                        },
-                        coverflowEffect: {
-                            rotate: 30,
-                            stretch: 0,
-                            depth: 200,
-                            modifier: 1,
-                            slideShadows: true,
                         },
                         pagination: {
                             el: '.swiper-pagination',
@@ -867,9 +849,34 @@
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
+                    };
+                    const desktopConfig = {
+                        effect: 'coverflow',
+                        grabCursor: true,
+                        centeredSlides: true,
+                        slidesPerView: 'auto',
+                        coverflowEffect: {
+                            rotate: 30,
+                            stretch: 0,
+                            depth: 200,
+                            modifier: 1,
+                            slideShadows: true,
+                        },
+                        on: {
+                            init(swiper) {
+                                swiper.slideToLoop(1, 0);
+                            },
+                        },
+                    };
+                    const mobileConfig = {
+                        effect: 'fade',
+                        fadeEffect: { crossFade: true },
+                        speed: 800,
+                    };
+                    new Swiper('.swiper', {
+                        ...baseConfig,
+                        ...(isMobile ? mobileConfig : desktopConfig),
                     });
-                    swiper.slideToLoop(1, 0);
-                    console.log('✅ Swiper 初始化完成');
                 });
             },
             methods: {
