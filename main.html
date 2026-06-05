@@ -292,19 +292,18 @@
         </section>
 
         <!-- Limited-time offer -->
-        <section id="limited_time_offer" class="bg-[var(--brand-dark)] pt-10 pb-20">
+        <section id="limited_time_offer" class="bg-[var(--brand-dark)] py-10">
             <div class="max-w-1200px mx-auto px-5">
-                <h2 class="text-[var(--brand-primary)] my-0 text-[28px] leading-[56px] font-bold text-center mb-4">
-                    {{ data.limitedTimeOffer.title }}</h2>
-                <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
-                    <div v-for="item in data.limitedTimeOffer.items" :key="item.id"
-                        class="bg-white relative border border-white border-solid rounded-lg py-5">
-                        <div class="ribbon">{{ item.ribbon }}</div>
-                        <img class="w-full h-full" :src="item.image" :alt="item.alt">
-                        <h3
-                            class="text-[var(--brand-primary)] absolute md:bottom-2 bottom-1 left-0 right-0 font-bold my-0 md:text-[20px] text-[16px] text-center">
-                            {{ item.alt }}</h3>
-                        <a class="absolute inset-0" :href="item.link"></a>
+                <div class="mb-10 rounded overflow-hidden bg-white p-2">
+                    <div class="w-full rounded overflow-hidden">
+                        <picture>
+                            <source media="(min-width: 768px)"
+                                :srcset="data.limitedTimeOffer.limitedTimeOfferBanner.desktop">
+                            <source media="(max-width: 767px)"
+                                :srcset="data.limitedTimeOffer.limitedTimeOfferBanner.mobile">
+                            <img class="block w-full" :src="data.limitedTimeOffer.limitedTimeOfferBanner.desktop"
+                                alt="研發中心">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -313,7 +312,8 @@
         <!-- video section -->
         <section id="highly_recommended" class="px-5 bg-[var(--brand-dark)] pb-10">
             <div class="max-w-1200px mx-auto">
-                <div class="grid grid-cols-1 justify-center flex-wrap rounded-[12px] overflow-hidden shadow-lg bg-white p-2">
+                <div
+                    class="grid grid-cols-1 justify-center flex-wrap rounded-[12px] overflow-hidden shadow-lg bg-white p-2">
                     <iframe class="w-full h-[300px] md:h-[568px]" :src="data.videos.main.embedUrl"
                         :title="data.videos.main.title" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -342,7 +342,8 @@
                 <div class="grid lg:grid-cols-2 grid-cols-1 mb-10 rounded overflow-hidden shadow p-2 bg-white">
                     <div class="bg-white grow-1 lg:order-1 order-2">
                         <div class="text-[var(--brand-light)] p-10 pt-10%">
-                            <h3 class="font-black text-[24px] my-0 mb-10 text-center">{{ data.brandContent.story1.title }}</h3>
+                            <h3 class="font-black text-[24px] my-0 mb-10 text-center">{{ data.brandContent.story1.title
+                                }}</h3>
                             <p class="my-0 text-[18px]">{{ data.brandContent.story1.description }}</p>
                         </div>
                     </div>
@@ -488,36 +489,10 @@
                         // 限時優惠
                         limitedTimeOffer: {
                             title: '7/1-7/31限定優惠',
-                            items: [
-                                {
-                                    id: 1,
-                                    ribbon: '開館慶登記抽',
-                                    image: './images/honey_enzyme-1000x1000.jpg',
-                                    link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '蜂蜜有酵飲10名'
-                                },
-                                {
-                                    id: 2,
-                                    ribbon: '滿1888送',
-                                    image: './images/V52NEWLOGO-60ml-1000x1000.jpg',
-                                    link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: 'V52 蔬果醱酵液60ML'
-                                },
-                                {
-                                    id: 3,
-                                    ribbon: '滿2888送',
-                                    image: './images/pineapple_polysaccharides-1000x1000.jpg',
-                                    link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '衛您好鳳梨多醣飲'
-                                },
-                                {
-                                    id: 4,
-                                    ribbon: '7.11滿3888送',
-                                    image: './images/bowel_movement_smoothing_enzyme-1000x1000.jpg',
-                                    link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '暢速樂'
-                                }
-                            ]
+                            limitedTimeOfferBanner: {
+                                desktop: './images/202605-MOMO全館活動BN-無LALAEX-1000x300.jpg', 
+                                mobile: './images/202605-MOMO全館活動BN-無LALAEX-1200x1200.jpg'
+                            }
                         },
 
                         // 影片連結
