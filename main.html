@@ -224,7 +224,7 @@
                     <div class="logo flex items-center gap-3">
                         <img :src="data.logo.main" alt="大漢酵素" class="h-20 w-auto"
                             @error="$event.target.src=data.logo.fallback">
-                        <h2 class="text-[var(--brand-primary)] font-bold my-0 md:text-[28px] text-[20px]">大漢酵素 官方旗艦館
+                        <h2 class="text-[var(--brand-primary)] font-bold my-0 md:text-[28px] text-[20px]">官方旗艦館
                         </h2>
                     </div>
                 </div>
@@ -233,7 +233,7 @@
         <!-- Navigation -->
         <nav class="bg-[var(--brand-primary)]">
             <ul
-                class="max-w-1680px mx-auto my-0 grid px-5 py-4 grid-cols-4 list-none text-center text-sm border-b border-gray-200">
+                class="max-w-980px mx-auto my-0 grid px-5 py-4 grid-cols-4 list-none text-center text-sm border-b border-gray-200">
                 <li v-for="(item, index) in data.navigation" :key="index"
                     :class="{'border-gray-200 border-r-1 border-r-solid': index < data.navigation.length - 1}">
                     <a :href="item.href"
@@ -273,7 +273,7 @@
                     {{ data.limitedTimeOffer.title }}</h2>
                 <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                     <div v-for="item in data.limitedTimeOffer.items" :key="item.id"
-                        class="bg-white relative border border-white border-solid rounded-lg pt-5">
+                        class="bg-white relative border border-white border-solid rounded-lg py-5">
                         <div class="ribbon">{{ item.ribbon }}</div>
                         <img class="w-full h-full" :src="item.image" :alt="item.alt">
                         <h3
@@ -315,20 +315,25 @@
         <section class="bg-[var(--brand-dark)] py-10">
             <div class="max-w-1200px mx-auto px-5">
                 <div class="grid lg:grid-cols-2 grid-cols-1 mb-10 rounded overflow-hidden shadow p-2 bg-white">
-                    <div class="grow-1">
-                        <div class="rounded overflow-hidden">
-                            <img class="block w-full h-full" :src="data.banners.grape" alt="葡萄">
-                        </div>
-                    </div>
                     <div class="bg-white grow-1">
                         <div class="text-[var(--brand-light)] p-10 pt-20%">
                             <h3 class="font-black text-[24px] my-0 mb-10">{{ data.brandContent.story1.title }}</h3>
                             <p class="my-0 text-[18px]">{{ data.brandContent.story1.description }}</p>
                         </div>
                     </div>
+                    <div class="grow-1">
+                        <div class="rounded overflow-hidden">
+                            <img class="block w-full h-full" :src="data.banners.grape" alt="葡萄">
+                        </div>
+                    </div>
                 </div>
                 <div class="grid lg:grid-cols-2 grid-cols-1 mb-20 rounded-[12px] overflow-hidden shadow p-2 bg-white">
-                    <div class="bg-white grow-1 order-last lg:order-first">
+                    <div class="grow-1">
+                        <div class="rounded-[12px] overflow-hidden order-last lg:order-first">
+                            <img class="block w-full h-full" :src="data.banners.fermentationChamber" alt="發酵槽">
+                        </div>
+                    </div>
+                    <div class="bg-white grow-1 ">
                         <div class="text-[var(--brand-light)] p-10 pt-14% text-center">
                             <h3 class="font-black text-[24px] my-0 text-center mb-10">{{ data.brandContent.story2.title
                                 }}</h3>
@@ -339,11 +344,7 @@
                                 data.brandContent.story2.ctaText }}</a>
                         </div>
                     </div>
-                    <div class="grow-1">
-                        <div class="rounded-[12px] overflow-hidden">
-                            <img class="block w-full h-full" :src="data.banners.fermentationChamber" alt="發酵槽">
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -441,13 +442,6 @@
                         // Hero 輪播圖
                         heroSlides: [
                             {
-                                id: 1,
-                                desktop: './images/hero1.jpg',
-                                mobile: './images/hero1mobile.jpg',
-                                link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                alt: '大漢酵素優惠活動 1'
-                            },
-                            {
                                 id: 2,
                                 desktop: './images/hero2.jpg',
                                 mobile: './images/hero2mobile.jpg',
@@ -460,13 +454,6 @@
                                 mobile: './images/hero3mobile.jpg',
                                 link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                 alt: '大漢酵素優惠活動 3'
-                            },
-                            {
-                                id: 4,
-                                desktop: './images/hero4.jpg',
-                                mobile: './images/hero4mobile.jpg',
-                                link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                alt: '大漢酵素優惠活動 4'
                             },
                             {
                                 id: 5,
@@ -483,31 +470,31 @@
                             items: [
                                 {
                                     id: 1,
-                                    ribbon: '下單送',
-                                    image: './images/LALAEX.jpg',
+                                    ribbon: '開館慶登記抽',
+                                    image: './images/honey_enzyme-1000x1000.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: 'LALA EX 體驗包'
+                                    alt: '蜂蜜有酵飲10名'
                                 },
                                 {
                                     id: 2,
-                                    ribbon: '滿2888送',
-                                    image: './images/SYA.jpg',
+                                    ribbon: '滿1888送',
+                                    image: './images/V52NEWLOGO-60ml-1000x1000.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '夜纖酵飲'
+                                    alt: 'V52 蔬果植物醱酵液60ML'
                                 },
                                 {
                                     id: 3,
-                                    ribbon: '滿3888送',
-                                    image: './images/v52.jpg',
+                                    ribbon: '滿2888送',
+                                    image: './images/pineapple_polysaccharides-1000x1000.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: 'v52 PLUS'
+                                    alt: '衛您好鳳梨多醣飲'
                                 },
                                 {
                                     id: 4,
-                                    ribbon: '滿5888送',
-                                    image: './images/points100.png',
+                                    ribbon: '滿3888送',
+                                    image: './images/bowel_movement_smoothing_enzyme-1000x1000.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
-                                    alt: '100MO點'
+                                    alt: '暢速樂'
                                 }
                             ]
                         },
@@ -559,7 +546,7 @@
                                 id: 'main_products',
                                 title: '主打組合',
                                 banner: {
-                                    image: './images/promodxbogo1920x920.jpg',
+                                    image: './images/DX-1920x920.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: '明日美夜酵素買一送一'
                                 },
@@ -600,7 +587,7 @@
                                 id: 'basic_health',
                                 title: '基礎保健',
                                 banner: {
-                                    image: './images/categorybasic1920x1080.jpg',
+                                    image: './images/categorybasic1280x350.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: '基礎保健系列'
                                 },
@@ -641,38 +628,38 @@
                                 id: 'little_secret',
                                 title: '女神秘密',
                                 banner: {
-                                    image: './images/categorygoddess1920x1080.jpg',
+                                    image: './images/categorygoddess1280x350.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: '女神秘密系列'
                                 },
                                 items: [
                                     {
                                         id: 1,
-                                        name: '暢速樂 5入',
-                                        image: './images/productchangsule5.jpg',
+                                        name: '好舒敏3入',
+                                        image: './images/202604-5月momo品牌旗艦館產品圖-好舒敏3入.jpg',
                                         link: 'https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14183556&Area=search&mdiv=403&oid=1_8&cid=index&kw=ESSENTURE+%E5%A4%A7%E6%BC%A2%E9%85%B5%E7%B4%A0',
-                                        alt: '暢速樂 5入組'
+                                        alt: '好舒敏3入'
                                     },
                                     {
                                         id: 2,
-                                        name: '助大漢 3入',
-                                        image: './images/productzhudahan3.jpg',
+                                        name: '果萃3入',
+                                        image: './images/202604-5月momo品牌旗艦館產品圖-果萃3入.jpg',
                                         link: 'https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14227981&Area=search&mdiv=403&oid=1_19&cid=index&kw=ESSENTURE+%E5%A4%A7%E6%BC%A2%E9%85%B5%E7%B4%A0',
-                                        alt: '助大漢 3入組'
+                                        alt: '果萃3入'
                                     },
                                     {
                                         id: 3,
-                                        name: '燉木耳 2入',
-                                        image: './images/productdunmuer2.jpg',
+                                        name: '消化的優2入',
+                                        image: './images/202604-5月momo品牌旗艦館產品圖-消化的優2入.jpg',
                                         link: 'https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9484582&Area=search&mdiv=403&oid=1_4&cid=index&kw=ESSENTURE+%E5%A4%A7%E6%BC%A2%E9%85%B5%E7%B4%A0',
-                                        alt: '燉木耳 2入組'
+                                        alt: '消化的優2入'
                                     },
                                     {
                                         id: 4,
-                                        name: 'NMN酵素之王Plus 3入',
-                                        image: './images/productnmnplus3.jpg',
+                                        name: '燉木耳2入',
+                                        image: './images/202604-5月momo品牌旗艦館產品圖-燉木耳2入.jpg',
                                         link: 'https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14593415&Area=search&mdiv=403&oid=2_29&cid=index&kw=ESSENTURE+%E5%A4%A7%E6%BC%A2%E9%85%B5%E7%B4%A0',
-                                        alt: 'NMN酵素之王Plus 3入組'
+                                        alt: '燉木耳2入'
                                     }
                                 ]
                             },
@@ -682,7 +669,7 @@
                                 id: 'first_choice',
                                 title: '送禮首選',
                                 banner: {
-                                    image: './images/categorygift1920x1080.jpg',
+                                    image: './images/categorygift1280x350.jpg',
                                     link: 'https://www.momoshop.com.tw/category/DgrpCategory.jsp?d_code=1203300109&p_orderType=4&showType=chessboardType',
                                     alt: '送禮首選系列'
                                 },
