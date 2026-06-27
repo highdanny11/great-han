@@ -261,7 +261,7 @@
                 class="max-w-980px mx-auto my-0 grid px-5 py-4 grid-cols-4 list-none text-center text-sm border-b border-gray-200">
                 <li v-for="(item, index) in data.navigation" :key="index"
                     :class="{'border-gray-200 border-r-1 border-r-solid': index < data.navigation.length - 1}">
-                    <a :href="item.href"
+                    <a :href="item.href" target="_blank" rel="noopener noreferrer"
                         class="text-white font-bold md:text-[20px] text-[16px] no-underline transition-colors">{{
                         item.name }}</a>
                 </li>
@@ -280,7 +280,7 @@
                             <source media="(max-width: 767px)" :srcset="slide.mobile">
                             <img :src="slide.desktop" class="w-full h-full object-cover" :alt="slide.alt">
                         </picture>
-                        <a class="absolute inset-0" :href="slide.link"></a>
+                        <a class="absolute inset-0" :href="slide.link" target="_blank" rel="noopener noreferrer"></a>
                     </div>
                 </div>
 
@@ -303,7 +303,7 @@
                                 :srcset="data.limitedTimeOffer.limitedTimeOfferBanner.mobile">
                             <img class="block w-full" :src="data.limitedTimeOffer.limitedTimeOfferBanner.desktop"
                                 alt="研發中心">
-                            <a class="absolute inset-0" :href="data.limitedTimeOffer.link"></a>
+                            <a class="absolute inset-0" :href="data.limitedTimeOffer.link" target="_blank" rel="noopener noreferrer"></a>
                         </picture>
                     </div>
                 </div>
@@ -406,14 +406,14 @@
                         <!-- Banner -->
                         <div class="rounded-t overflow-hidden relative">
                             <img class="w-full" :src="category.banner.image" :alt="category.banner.alt">
-                            <a class="absolute inset-0" :href="category.banner.link"></a>
+                            <a class="absolute inset-0" :href="category.banner.link" target="_blank" rel="noopener noreferrer"></a>
                         </div>
                         <!-- 產品網格 -->
                         <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                             <div v-for="item in category.items" :key="item.id"
                                 class="rounded-lg relative group hover:translate-y-[-5px] transition-transform">
                                 <img class="w-full" :src="item.image" :alt="item.alt">
-                                <a class="absolute inset-0" :href="item.link"></a>
+                                <a class="absolute inset-0" :href="item.link" target="_blank" rel="noopener noreferrer"></a>
                             </div>
                         </div>
                     </div>
@@ -423,7 +423,7 @@
 
         <!-- more -->
         <section class="px-5 md:px-10 bg-[var(--brand-dark)] pb-10">
-            <a :href="data.commonLinks.mainStore"
+            <a :href="data.commonLinks.mainStore" target="_blank" rel="noopener noreferrer"
                 class="flex bg-[var(--brand-primary)] lg:p-10 lg:w-40% p-5 w-80% max-w-576px mx-auto items-center justify-center gap-6 rounded-136px hover:translate-y-[-5px] transition-transform">
                 <div class="w-40%">
                     <img class="w-full object-cover md:h-130px h-80px" :src="data.logo.white" alt="大漢酵素">
