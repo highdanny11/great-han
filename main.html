@@ -241,6 +241,23 @@
    		top: -20px;
 	}
 
+        #hero {
+            overflow: hidden;
+        }
+
+        #hero .swiper-slide picture {
+            display: block;
+            width: 100%;
+        }
+
+        /* 桌機 coverflow：讓 slide 高度由圖片內容決定，避免被 flex stretch 撐高 */
+        @media (min-width: 768px) {
+            #hero .swiper-slide {
+                height: auto !important;
+                align-self: flex-start;
+            }
+        }
+
     </style>
 
 </head>
@@ -284,7 +301,7 @@
                         <picture>
                             <source media="(min-width: 768px)" :srcset="slide.desktop">
                             <source media="(max-width: 767px)" :srcset="slide.mobile">
-                            <img :src="slide.desktop" class="w-full h-full object-cover" :alt="slide.alt">
+                            <img :src="slide.desktop" class="w-full h-auto block" :alt="slide.alt">
                         </picture>
                         <a class="absolute inset-0" :href="slide.link" target="_blank" rel="noopener noreferrer"></a>
                     </div>
@@ -838,6 +855,7 @@
                         grabCursor: true,
                         centeredSlides: true,
                         slidesPerView: 'auto',
+                        autoHeight: true,
                         coverflowEffect: {
                             rotate: 30,
                             stretch: 0,
